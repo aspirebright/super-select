@@ -428,8 +428,13 @@ export default class SuperSelect extends LightningElement {
                 this.configTrack.filteredSuggestedItems = [...suggestedItems];
             }
         }
-        let inputElement = this.template.querySelector('[data-id="inputElement"]');
-        inputElement.focus();
+        setTimeout(() => {
+            this.template.querySelectorAll('[data-type="selected-pills"]').forEach((element) => {
+                if (element.dataset.value == selectedItemValue) {
+                    element.focus();
+                }
+            });
+        }, 500);
         this.showList = true;
         if (this.configTrack.onSelect && this.configTrack.onSelect.eventName) {
             this.dispatchEventWithData("onSelect", this.configTrack.onSelect.eventName);
@@ -533,6 +538,12 @@ export default class SuperSelect extends LightningElement {
         }
     }
 
+    handleDeleteBtn(event) {
+        if (this.getKeyCode(event) === 46) {
+            this.handleRemoveSelection(event);
+        }
+    }
+
     handlePillFocus() {
         this.hadFocus = true;
     }
@@ -591,6 +602,8 @@ export default class SuperSelect extends LightningElement {
         //added as workaround to trigger required validation the first time
         this.hadFocus = true;
         this.triggerRequiredFieldValidation();
+        let inputElement = this.template.querySelector('[data-id="inputElement"]');
+        inputElement.focus();
     }
 
     handleListItemKeyUp(event) {
@@ -651,9 +664,9 @@ export default class SuperSelect extends LightningElement {
 
     get clearAllItemsAriaLabel() {
         if (this.hasSelections) {
-            return "Clear all filters";
+            return "Clear all items";
         }
-        return "Clear all filters unavailable";
+        return "Clear all items unavailable";
     }
 
     get clearAllItemsClasses() {
