@@ -1,0 +1,58 @@
+.min-height-32px {
+    min-height: 32px !important;
+}
+
+.slds-combobox__form-element.input-error {
+    border: 1px solid rgb(194, 57, 52);
+    box-shadow: rgb(194, 57, 52) 0 0 0 1px inset;
+}
+
+.slds-combobox__input.input-super-style {
+    min-height: 30px!important;
+    border: none!important;
+    box-shadow: none !important;
+    margin: 2px !important;
+    width: 95% !important;
+}
+
+li.selected-item {
+    background-color: rgb(218, 248, 158) !important;
+}
+
+.gray {
+    background-color: silver;
+}
+
+.border-shodow-none {
+    box-shadow:none !important;
+}
+
+.slds-dropdown-trigger_click.slds-is-open .slds-dropdown {
+    display: contents !important;
+}
+
+.clear-all-items-disbled{
+    color: gray;
+    pointer-events: none;
+    cursor: default;
+}
+
+.error-div {
+    color: #c23934;
+    margin-top: 2px;
+}
+
+.asterisk {
+    font-weight: normal !important;
+    text-decoration: none !important;
+}
+
+.clear-all {
+    position: absolute;
+    top: 4px;
+    right: -3px;
+}
+
+.list-box {
+    max-width: 94%;
+}

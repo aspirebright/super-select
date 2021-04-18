@@ -1,0 +1,90 @@
+<template>
+    <div  class="slds-box slds-theme_default slds-theme_backgroundColor-lightblue">
+        <div class="slds-scoped-notification slds-media slds-media_center slds-scoped-notification_light" role="status">
+            <div class="slds-media__figure">
+              <span class="slds-icon_container slds-icon-utility-info" title="information">
+                <lightning-icon icon-name="utility:info" aria-label="Info" size="small">
+                </lightning-icon>
+                <span class="slds-assistive-text">information</span>
+              </span>
+            </div>
+            <div class="slds-media__body">
+              <p> 
+                  Below demostrates the implementation of "c-super-select" LWC in two different datasource contexts such as multi-selct picklist (tab1) and jsonArray (tab2). It can also be used in single select picklist and really any junction object context with the jsonArray datasource type and it has plenty of @api method to reset/set selections and removals from your parent component. GIT repo source code for the <a href="#">c-super-select</a> LWC and sample implementation LWC <a href="#">c-sample-super-select</a>.    
+                </p>
+            </div>
+        </div>
+        <lightning-tabset>
+            <lightning-tab label="Multi-Select-Picklist">
+                <div  class="slds-box slds-theme_default slds-theme_backgroundColor-lightblue">
+                    <div class="slds-scoped-notification slds-media slds-media_center slds-scoped-notification_light" role="status">
+                        <div class="slds-media__figure">
+                          <span class="slds-icon_container slds-icon-utility-info" title="information">
+                            <lightning-icon icon-name="utility:info" aria-label="Info" size="small">
+                            </lightning-icon>
+                            <span class="slds-assistive-text">information</span>
+                          </span>
+                        </div>
+                        <div class="slds-media__body">
+                          <p> 
+                              Below demostrates the implementation of "c-super-select" LWC in the context of multi-selct picklist with required validation and data selection/removal event with sample of reseting selection/removal from the parent using api method provided on the super-select component. Also this This demo has alwaysShowList mode as true which can simply be falsified if that isn't needed.
+                          </p>
+                        </div>
+                    </div>
+                    <c-super-select data-id="AccountSourcePicklist" config={multiSelectConfigSample} onaccountsourceselect={handleAccountSourceSelectMultiSelect} onaccountsourceremove={handleAccountSourceRemoveMultiSelect} ></c-super-select>
+                    <br/>  
+                    <div class="slds-box slds-theme_default slds-theme_backgroundColor-lightblue">
+                        <h1><b>Selected Items returned to parent component:</b></h1>
+                        <br/>
+                        <span><b>Result:</b> {selectedItemsMultiSelectString}</span>
+                        <br/><br/>
+                        <div>
+                            <button class="slds-button slds-button_brand" onclick={handleResetSelection} >Reset Selection</button>
+                        </div>
+                    </div>  
+                    <br/>  
+                    <div class="slds-box slds-theme_default slds-theme_backgroundColor-lightblue">
+                        <h1><b>Removed Item returned to parent component:</b></h1>
+                        <br/>
+                        <span><b>Result:</b> {removedItemsMultiSelectString}</span>
+                        <br/><br/>
+                        <div>
+                            <button class="slds-button slds-button_brand" onclick={handleResetRemoval} >Reset Removal</button>
+                        </div>
+                    </div>   
+                </div>  
+            </lightning-tab>
+            <lightning-tab label="JSON-Array" >
+                <div class="slds-box slds-theme_default slds-theme_backgroundColor-lightblue">
+                    <div class="slds-scoped-notification slds-media slds-media_center slds-scoped-notification_light" role="status">
+                        <div class="slds-media__figure">
+                          <span class="slds-icon_container slds-icon-utility-info" title="information">
+                            <lightning-icon icon-name="utility:info" aria-label="Info" size="small">
+                            </lightning-icon>
+                            <span class="slds-assistive-text">information</span>
+                          </span>
+                        </div>
+                        <div class="slds-media__body">
+                          <p> 
+                              Below demostrates the implementation of "c-super-select" LWC in the context of multi-selct jsonArray datasource with data selection/removal events and custom validation for not allowing to remove or select some of the items from the lists. 
+                          </p>
+                        </div>
+                    </div>
+                    <c-super-select config={jsonArrayConfigSample} onaccountsourceselect={handleAccountSourceSelectJSON} onaccountsourceremove={handleAccountSourceRemoveJSON} ></c-super-select>
+                    <br/>  
+                    <div class="slds-box slds-theme_default slds-theme_backgroundColor-lightblue">
+                        <h1><b>Selected Items returned to parent component:</b></h1>
+                        <br/>
+                        <span><b>Result:</b> {selectedItemsJSON}</span>
+                    </div>  
+                    <br/>  
+                    <div class="slds-box slds-theme_default slds-theme_backgroundColor-lightblue">
+                        <h1><b>Removed Item returned to parent component:</b></h1>
+                        <br/>
+                        <span><b>Result:</b> {removedItemsJSON}</span>
+                    </div>   
+                </div>  
+            </lightning-tab>       
+        </lightning-tabset>
+    </div>  
+</template>
