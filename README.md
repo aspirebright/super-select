@@ -1,6 +1,6 @@
 # c-super-select lwc component
 
-This is an open source lwc component that you can deploy to your salesforce org and use it on any of your custom LWC implementations. c-super-select lwc is intitive single/multi-select picklist component that both works with object.picklistfield and jsonArray datasources (in the any lookup or junction record selction context).
+This is an open-source lwc component that you can deploy to your salesforce org and use it on any of your custom LWC implementations. c-super-select lwc is an intuitive single/multi-select picklist component that both works with object.picklistfield and jsonArray datasources (in any lookup or junction record selection context).
 
 A free component by [Aspire Bright LLC](https://www.aspirebright.com/)
 
@@ -33,4 +33,4 @@ Make sure to start from a brand-new salesforce project on vs code environment to
     sfdx force:source:deploy -p force-app
     ```
 
-5. After successful deployment, enable the "Super Select Demo" Flexi Page Tab for System Admins and other permission sets on the deployed Org to take look at super-select demo.
+5. After successful deployment, enable the "Super Select Demo" Flexi Page Tab for System Admins and other permission sets on the deployed Org to take look at the super-select demo.
