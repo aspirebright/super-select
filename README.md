@@ -1,18 +1,26 @@
-# Salesforce DX Project: Next Steps
+## For deploying c-super-select & c-sample-super-select to your Salesforce Org, please follow the below instructions.
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+Make sure to start from a brand-new salesforce project on vs code environment to avoid conflicts with previous work you may have done.
 
-## How Do You Plan to Deploy Your Changes?
+1. Clone this repository:
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+    ```
+    git clone https://github.com/aspirebright/super-select.git
+    cd super-select
+    ```
 
-## Configure Your Salesforce DX Project
+2. Authorize your Trailhead Playground or Developer org and provide it with an alias (**mydevorg** in the command below):
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+    ```
+    sfdx force:auth:web:login -s -a mydevorg
+    ```
 
-## Read All About It
+3. If you are setting up a Developer Edition: go to **Setup**, under **My Domain**, [register a My Domain](https://help.salesforce.com/articleView?id=domain_name_setup.htm&type=5).
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+4. Run this command in a terminal to deploy the app.
+
+    ```
+    sfdx force:source:deploy -p force-app
+    ```
+
+5. After successful deployment, enable the "Super Select Demo" Flexi Page Tab for System Admins and other permission sets on the deployed Org to take look at super-select demo.

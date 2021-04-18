@@ -1,89 +1,99 @@
 <template>
-
     <div class="slds-form-element">
         <label class="slds-form-element__label" style={configTrack.labelStyle} for="inputElement">
             <abbr if:true={showRequiredAsterisk} class="slds-required asterisk" title="required">* </abbr>
             {configTrack.label}
         </label>
-        <div class="slds-form-element__control" >
+        <div class="slds-form-element__control">
             <div class={comboboxContainerClasses}>
                 <div class={dropdownClasses} aria-expanded="false" aria-haspopup="listbox" role="combobox">
                     <div class={inputDivClasses} role="none">
-                        
                         <span if:false={hasSelections} id="outputElement" class="slds-assistive-text">No selection</span>
-                        <div if:true={hasSelections} class="slds-listbox_selection-group slds-is-expanded slds-clearfix ">
-                            
-                            <ul class="slds-listbox slds-listbox_horizontal list-box" role="listbox" aria-label="Selected Options:"
-                                aria-orientation="horizontal">
-                                <template iterator:it={selectedItemsMap} >
-                                    <template iterator:it={it.value} >
+                        <div if:true={hasSelections} class="slds-listbox_selection-group slds-is-expanded slds-clearfix">
+                            <ul class="slds-listbox slds-listbox_horizontal list-box" role="listbox" aria-label="Selected Options:" aria-orientation="horizontal">
+                                <template iterator:it={selectedItemsMap}>
+                                    <template iterator:it={it.value}>
                                         <li if:true={it.last} key={it.value.value} class="slds-listbox-item" role="presentation">
                                             <span class="slds-pill" role="option" tabindex="0" aria-selected="true" onfocus={handlePillFocus}>
-                                                <span if:true={it.value.icon} class="slds-icon_container slds-pill__icon_container"
-                                                    title={it.value.label} >
-                                                    <span if:true={it.value.icon} class="slds-media__figure slds-listbox__option-icon" >
+                                                <span if:true={it.value.icon} class="slds-icon_container slds-pill__icon_container" title={it.value.label}>
+                                                    <span if:true={it.value.icon} class="slds-media__figure slds-listbox__option-icon">
                                                         <lightning-icon icon-name={it.value.icon} size="xx-small" alternative-text={it.value.label}></lightning-icon>
                                                     </span>
                                                 </span>
                                                 <span class="slds-pill__label" title={it.value.label}>{it.value.label}</span>
                                                 <span if:false={isReadonly} class="slds-icon_container slds-pill__remove" title="Remove">
-                                                    <lightning-icon icon-name="utility:close" aria-label="Press delete to remove" size="xx-small"
-                                                        data-value={it.value.value} data-label={it.value.label} onclick={handleRemoveSelection}>
+                                                    <lightning-icon
+                                                        icon-name="utility:close"
+                                                        aria-label="Press delete to remove"
+                                                        size="xx-small"
+                                                        data-value={it.value.value}
+                                                        data-label={it.value.label}
+                                                        onclick={handleRemoveSelection}
+                                                    >
                                                     </lightning-icon>
                                                 </span>
                                             </span>
-                                        </li> 
+                                        </li>
                                     </template>
                                 </template>
                             </ul>
 
                             <span if:false={isReadonly} onkeydown={handleClearAllItems} tabindex="-1">
-                                <a href="javascript:void(0);" onclick={handleClearAllItems} class={clearAllItemsClasses} aria-label={clearAllItemsAriaLabel} >
-                                    Clear All
-                                </a>
+                                <a href="javascript:void(0);" onclick={handleClearAllItems} class={clearAllItemsClasses} aria-label={clearAllItemsAriaLabel}> Clear All </a>
                             </span>
-
                         </div>
 
-                        <input if:false={isReadonly} id="inputElement" type="text" class={inputClasses} data-id="inputElement" onkeyup={handleInputKeyUp} 
-                            onfocus={handleInputFocus} onblur={handleInputBlur} aria-autocomplete="list" autocomplete="off" 
-                            role="textbox" placeholder={configTrack.placeHolder} />
+                        <input
+                            if:false={isReadonly}
+                            id="inputElement"
+                            type="text"
+                            class={inputClasses}
+                            data-id="inputElement"
+                            onkeyup={handleInputKeyUp}
+                            onfocus={handleInputFocus}
+                            onblur={handleInputBlur}
+                            aria-autocomplete="list"
+                            autocomplete="off"
+                            role="textbox"
+                            placeholder={configTrack.placeHolder}
+                        />
 
                         <template if:true={showListbox}>
                             <div if:false={isReadonly} id="listbox-id-19" class="slds-dropdown slds-dropdown_fluid" role="listbox">
-                                <ul class="slds-listbox slds-listbox_vertical"  onmousedown={handleListBoxMouseDown} role="presentation" style={listboxStyle} >
-                                    
-                                    <template for:each={configTrack.filteredSuggestedItems} for:item="item" for:index="index" >
-                                        <li key={item.value} data-value={item.value} role="presentation" class={item.cssClasses} onclick={handleSelection} > 
-                                            <div data-type="listitem" tabindex="-1" onkeyup={handleListItemKeyUp} onblur={handleListItemBlur} onfocus={handleListItemFocus} 
-                                                data-recordid={item.value} data-index={index} data-value={item.value} 
-                                                class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option" >
+                                <ul class="slds-listbox slds-listbox_vertical" onmousedown={handleListBoxMouseDown} role="presentation" style={listboxStyle}>
+                                    <template for:each={configTrack.filteredSuggestedItems} for:item="item" for:index="index">
+                                        <li key={item.value} data-value={item.value} role="presentation" class={item.cssClasses} onclick={handleSelection}>
+                                            <div
+                                                data-type="listitem"
+                                                tabindex="-1"
+                                                onkeyup={handleListItemKeyUp}
+                                                onblur={handleListItemBlur}
+                                                onfocus={handleListItemFocus}
+                                                data-recordid={item.value}
+                                                data-index={index}
+                                                data-value={item.value}
+                                                class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                                                role="option"
+                                            >
                                                 <span if:true={item.icon} class="slds-media__figure slds-listbox__option-icon">
-                                                    <lightning-icon icon-name={item.icon}  size="x-small"></lightning-icon>
+                                                    <lightning-icon icon-name={item.icon} size="x-small"></lightning-icon>
                                                 </span>
                                                 <span class="slds-media__body">
-                                                    <span class="slds-listbox__option-text slds-listbox__option-text_entity">
-                                                        {item.label}
-                                                    </span>
-                                                    <span class="slds-listbox__option-meta slds-listbox__option-meta_entity">
-                                                        {item.subLabel}
-                                                    </span>
+                                                    <span class="slds-listbox__option-text slds-listbox__option-text_entity"> {item.label} </span>
+                                                    <span class="slds-listbox__option-meta slds-listbox__option-meta_entity"> {item.subLabel} </span>
                                                 </span>
                                             </div>
                                         </li>
-                                    </template>   
+                                    </template>
                                 </ul>
                             </div>
                         </template>
-                        
                     </div>
-                    
                 </div>
             </div>
         </div>
-        <template if:true={errorMessage} >
+        <template if:true={errorMessage}>
             <div data-id="errorMessage" aria-live="assertive" class="error-div">{errorMessage}</div>
         </template>
     </div>
-
 </template>
