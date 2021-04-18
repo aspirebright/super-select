@@ -1,8 +1,12 @@
-# Salesforce Field level (FLS) & Object level - permissions compare & sync
+# c-super-select lwc component
 
-# c-super-select is an open source lwc component that you can deploy to your salesforce org and use it on any of your custom LWC implementations. c-super-select lwc is intitive single/multi-select picklist component that both works with object.picklistfield and jsonArray datasources (in the any lookup or junction record selction context).
+This is an open source lwc component that you can deploy to your salesforce org and use it on any of your custom LWC implementations. c-super-select lwc is intitive single/multi-select picklist component that both works with object.picklistfield and jsonArray datasources (in the any lookup or junction record selction context).
 
 A free component by [Aspire Bright LLC](https://www.aspirebright.com/)
+
+![Super Select - MultiSelect Picklist Demo](https://user-images.githubusercontent.com/7284747/115159136-b1c8db80-a05f-11eb-906a-b6a46eeac1c5.gif)
+
+![Super Select - JSON Array Demo](https://user-images.githubusercontent.com/7284747/115159180-dcb32f80-a05f-11eb-8956-4e262702fc28.gif)
 
 ## For deploying c-super-select & c-sample-super-select to your Salesforce Org, please follow the below instructions.
 
