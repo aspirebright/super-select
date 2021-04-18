@@ -10,14 +10,23 @@
                     <div class={inputDivClasses} role="none">
                         <span if:false={hasSelections} id="outputElement" class="slds-assistive-text">No selection</span>
                         <div if:true={hasSelections} class="slds-listbox_selection-group slds-is-expanded slds-clearfix">
-                            <ul class="slds-listbox slds-listbox_horizontal list-box" role="listbox" aria-label="Selected Options:" aria-orientation="horizontal">
+                            <ul tabindex="0" class="slds-listbox slds-listbox_horizontal list-box" role="listbox" aria-label="Selected Options:" aria-orientation="horizontal">
                                 <template iterator:it={selectedItemsMap}>
                                     <template iterator:it={it.value}>
                                         <li if:true={it.last} key={it.value.value} class="slds-listbox-item" role="presentation">
-                                            <span class="slds-pill" role="option" tabindex="0" aria-selected="true" onfocus={handlePillFocus}>
-                                                <span if:true={it.value.icon} class="slds-icon_container slds-pill__icon_container" title={it.value.label}>
+                                            <span
+                                                data-type="selected-pills"
+                                                data-value={it.value.value}
+                                                class="slds-pill"
+                                                role="option"
+                                                tabindex="0"
+                                                aria-selected="true"
+                                                onfocus={handlePillFocus}
+                                                onkeyup={handleDeleteBtn}
+                                            >
+                                                <span if:true={it.value.icon} class="slds-icon_container slds-pill__icon_container">
                                                     <span if:true={it.value.icon} class="slds-media__figure slds-listbox__option-icon">
-                                                        <lightning-icon icon-name={it.value.icon} size="xx-small" alternative-text={it.value.label}></lightning-icon>
+                                                        <lightning-icon icon-name={it.value.icon} size="xx-small"></lightning-icon>
                                                     </span>
                                                 </span>
                                                 <span class="slds-pill__label" title={it.value.label}>{it.value.label}</span>
@@ -93,7 +102,7 @@
             </div>
         </div>
         <template if:true={errorMessage}>
-            <div data-id="errorMessage" aria-live="assertive" class="error-div">{errorMessage}</div>
+            <div tabindex="-1" data-id="errorMessage" aria-live="assertive" class="error-div">{errorMessage}</div>
         </template>
     </div>
 </template>
