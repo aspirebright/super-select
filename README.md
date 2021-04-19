@@ -33,4 +33,4 @@ Make sure to start from a brand-new salesforce project on vs code environment to
     sfdx force:source:deploy -p force-app
     ```
 
-5. After successful deployment, enable the "Super Select Demo" Flexi Page Tab for System Admins and other permission sets on the deployed Org to take look at the super-select demo.
+5. After successful deployment, activate and enable the "Super Select Demo" Flexi Page Tab for System Admins and other permission sets on the deployed Org to take look at the super-select demo.
